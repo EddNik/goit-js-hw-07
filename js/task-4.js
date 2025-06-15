@@ -1,47 +1,27 @@
-const getTotalBalanceByGender = (users, gender) => {
-  return users.filter(user => user.gender === gender).reduce((acc, user) => acc + user.balance, 0);
+const loginForm = document.querySelector('.login-form');
+
+const emailInputName = 'email';
+const passwordInputName = 'password';
+
+const formObjectAfterSubmit = {
+  [emailInputName]: '',
+  [passwordInputName]: '',
 };
 
-const clients = [
-  {
-    name: 'Moore Hensley',
-    gender: 'male',
-    balance: 2811,
-  },
-  {
-    name: 'Sharlene Bush',
-    gender: 'female',
-    balance: 3821,
-  },
-  {
-    name: 'Ross Vazquez',
-    gender: 'male',
-    balance: 3793,
-  },
-  {
-    name: 'Elma Head',
-    gender: 'female',
-    balance: 2278,
-  },
-  {
-    name: 'Carey Barr',
-    gender: 'male',
-    balance: 3951,
-  },
-  {
-    name: 'Blackburn Dotson',
-    gender: 'male',
-    balance: 1498,
-  },
-  {
-    name: 'Sheree Anthony',
-    gender: 'female',
-    balance: 2764,
-  },
-];
+loginForm.addEventListener('submit', event => {
+  event.preventDefault();
+  const formElementsCollection = event.target.elements;
+  formObjectAfterSubmit[emailInputName] = formElementsCollection.email.value.trim();
+  formObjectAfterSubmit[passwordInputName] = formElementsCollection.password.value.trim();
 
-console.log('task-4.js');
+  if (
+    formObjectAfterSubmit[emailInputName] === '' ||
+    formObjectAfterSubmit[passwordInputName] === ''
+  ) {
+    alert('All form fields must be filled in');
+  } else {
+    console.log(formObjectAfterSubmit);
+  }
 
-console.log(getTotalBalanceByGender(clients, 'male')); // 12053
-
-console.log(getTotalBalanceByGender(clients, 'female')); // 8863
+  loginForm.reset();
+});
