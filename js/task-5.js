@@ -10,15 +10,7 @@ const spanColorInText = document.querySelector('.color');
 
 changeColor.addEventListener('click', event => {
   event.preventDefault();
-  bodyColor.style.backgroundColor = getRandomHexColor();
-
-  // it's unclear from description task if dash is present or should be replaced
-
-  // color in text format were appended following the dash character. Two approaches::
-
-  spanColorInText.textContent = `-${getRandomHexColor()}`;
-  spanColorInText.style.color = getRandomHexColor();
-
-  // spanColorInText.innerHTML = '-';
-  // spanColorInText.insertAdjacentHTML('beforeend', getRandomHexColor());
+  const color = getRandomHexColor();
+  bodyColor.style.backgroundColor = color;
+  spanColorInText.textContent = color;
 });
